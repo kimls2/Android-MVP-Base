@@ -15,15 +15,14 @@ import org.apache.commons.collections4.CollectionUtils;
 
 @Singleton public class DataManager {
 
-  private final ImgurService mImgurService;
+  private final ImgurService imgurService;
 
-  @Inject public DataManager(ImgurService mImgurService) {
-    this.mImgurService = mImgurService;
+  @Inject DataManager(ImgurService imgurService) {
+    this.imgurService = imgurService;
   }
 
-  public Observable<List<GalleryImage>> getGallery(String section, String sort, String window,
-      int page, boolean showViral) {
-    return mImgurService.getGallery(section, sort, window, page, showViral)
+  public Observable<List<GalleryImage>> getGallery(int page) {
+    return imgurService.getGallery(page)
         .filter(response -> response.isSuccess() && CollectionUtils.isNotEmpty(response.getData()))
         .map(GalleryResponse::getData);
   }

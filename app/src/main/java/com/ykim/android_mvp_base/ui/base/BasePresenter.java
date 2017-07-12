@@ -13,6 +13,7 @@ public class BasePresenter<T extends BaseMvp.View> implements BaseMvp.Presenter<
 
   @Override public void attachView(T mvpView) {
     this.mvpView = mvpView;
+    disposable = new CompositeDisposable();
   }
 
   @Override public void detachView() {

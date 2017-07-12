@@ -16,12 +16,13 @@
 
 package com.ykim.android_mvp_base.di;
 
+import com.ykim.android_mvp_base.ui.detail.DetailActivity;
 import com.ykim.android_mvp_base.ui.main.MainActivity;
-import com.ykim.android_mvp_base.ui.main.MainModule;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
-@Module abstract class MainActivityModule {
-  @ContributesAndroidInjector(modules = MainModule.class)
-  abstract MainActivity contributeMainActivity();
+@Module abstract class ActivityModule {
+  @ContributesAndroidInjector() abstract MainActivity contributeMainActivity();
+
+  @ContributesAndroidInjector() abstract DetailActivity contributeDetailActivity();
 }

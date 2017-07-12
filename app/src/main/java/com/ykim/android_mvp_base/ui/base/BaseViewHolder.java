@@ -5,6 +5,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import butterknife.ButterKnife;
 
 /**
  * Created by ykim on 2017. 7. 12..
@@ -33,10 +34,11 @@ public abstract class BaseViewHolder<T> extends LinearLayout {
   }
 
   private void init() {
-    inflate(getContext(),layoutResId(),this);
+    inflate(getContext(), layoutResId(), this);
+    ButterKnife.bind(this);
   }
 
   protected abstract @LayoutRes int layoutResId();
 
-  abstract void bind(T item);
+  public abstract void bind(T item);
 }

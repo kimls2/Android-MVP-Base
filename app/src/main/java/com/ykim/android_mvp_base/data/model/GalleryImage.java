@@ -51,16 +51,16 @@ import lombok.experimental.Accessors;
     }
   }
 
-  public String getThumbnailSize(char size) {
+  public String getThumbnailSize() {
     String thumbnailId = id;
     if (is_album) {
       thumbnailId = cover;
     }
-    return BASE_IMAGE_ADDRESS + thumbnailId + size + ".jpg";
+    return BASE_IMAGE_ADDRESS + thumbnailId + MEDIUM_THUMBNAIL + ".jpg";
   }
 
   public String getDetailUrl() {
-    String url = getThumbnailSize(HUGE_THUMBNAIL);
+    String url = getThumbnailSize();
     // gif image / less than 20MB
     if (isAnimated() && size < 21000000) {
       url = link;

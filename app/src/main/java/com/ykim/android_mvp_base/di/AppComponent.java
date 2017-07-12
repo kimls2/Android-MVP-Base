@@ -12,7 +12,7 @@ import javax.inject.Singleton;
  */
 
 @Singleton
-@Component(modules = { AppModule.class, AndroidInjectionModule.class, MainActivityModule.class })
+@Component(modules = { AppModule.class, AndroidInjectionModule.class, ActivityModule.class })
 interface AppComponent {
   @Component.Builder interface Builder {
     @BindsInstance Builder app(Application application);

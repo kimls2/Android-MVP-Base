@@ -7,5 +7,6 @@ import dagger.Module;
  */
 
 @Module public abstract class MainModule {
-  //abstract MainPresenter mainPresenter();
+
+  abstract MainPresenter mainPresenter();
 }
