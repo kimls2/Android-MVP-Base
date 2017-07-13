@@ -24,7 +24,6 @@ public class MainPresenter extends BasePresenter<MainMvp.View> implements MainMv
 
   @Override public void attachView(MainMvp.View mvpView) {
     super.attachView(mvpView);
-    //loadImages(1);
   }
 
   @Override public void loadImages(int page) {
