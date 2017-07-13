@@ -88,6 +88,7 @@ import java.util.List;
 
   @Override public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
     ((TestViewHolder) holder).view.bind(items.get(position));
+
   }
 
   class TestViewHolder extends RecyclerView.ViewHolder {

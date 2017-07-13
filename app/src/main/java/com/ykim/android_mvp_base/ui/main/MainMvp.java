@@ -8,9 +8,9 @@ import java.util.List;
  * Created by ykim on 2017. 7. 12..
  */
 
-interface MainMvp  {
+public interface MainMvp {
 
-  interface View extends BaseMvp.View{
+  interface View extends BaseMvp.View {
     void showImages(List<GalleryImage> images);
   }
 

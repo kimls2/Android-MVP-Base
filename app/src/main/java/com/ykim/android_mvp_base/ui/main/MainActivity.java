@@ -30,6 +30,7 @@ public class MainActivity extends BaseActivity implements MainMvp.View {
     super.onCreate(savedInstanceState);
 
     presenter.attachView(this);
+    presenter.loadImages(1);
     mainAdapter = new MainAdapter();
     mainRv.setLayoutManager(new LinearLayoutManager(this));
     mainRv.setAdapter(mainAdapter);
