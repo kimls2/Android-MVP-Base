@@ -5,6 +5,9 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import butterknife.ButterKnife;
+import com.squareup.leakcanary.RefWatcher;
+import com.ykim.android_mvp_base.BuildConfig;
+import com.ykim.android_mvp_base.MyApp;
 import com.ykim.android_mvp_base.di.Injectable;
 
 /**
@@ -19,5 +22,13 @@ public abstract class BaseActivity extends AppCompatActivity implements Injectab
     super.onCreate(savedInstanceState);
     setContentView(getLayoutResId());
     ButterKnife.bind(this);
+  }
+
+  @Override protected void onDestroy() {
+    super.onDestroy();
+    if (BuildConfig.DEBUG) {
+      RefWatcher refWatcher = MyApp.getRefWatcher(this);
+      refWatcher.watch(this);
+    }
   }
 }
