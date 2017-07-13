@@ -50,6 +50,13 @@ dependencies {
   final UI_AUTOMATOR_VERSION = '2.1.2'
   final RUNNER_VERSION = '0.5'
 
+  // support lib
+  compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+  compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+  compile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
+  compile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
+  compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
   compile "com.jakewharton:butterknife:$BUTTER_KNIFE"
   annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE"
 
@@ -85,45 +92,32 @@ dependencies {
   annotationProcessor "org.projectlombok:lombok:1.12.6"
 
 
-
-  // support lib
-  compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
-  compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
-  compile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
-  compile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
-  compile 'com.android.support.constraint:constraint-layout:1.0.2'
-
-
-
   // unit test
   testCompile "junit:junit:$JUNIT_VERSION"
   testCompile "org.mockito:mockito-all:$MOCKITO_VERSION"
   testCompile "org.hamcrest:hamcrest-all:$HAMCREST_VERSION"
 
 
-
   // ui test
+  // Android Testing Support Library's runner and rules
+  androidTestCompile "com.android.support.test:runner:$RUNNER_VERSION"
+  androidTestCompile "com.android.support.test:rules:$RUNNER_VERSION"
+
+  // Dependencies for Android unit tests
   androidTestCompile "junit:junit:$JUNIT_VERSION"
-  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-    exclude group: 'com.android.support', module: 'support-annotations'
-  })
-//  androidTestCompile "com.android.support.test.espresso:espresso-intents:$ESPRESSO_VERSION"
-
-  //  androidTestCompile 'com.android.support:support-annotations:23.1.1'
-  //  androidTestCompile("com.android.support.test.espresso:espresso-contrib:$ESPRESSO_VERSION") {
-  //    exclude group: 'com.android.support', module: 'appcompat'
-  //    exclude group: 'com.android.support', module: 'support-v4'
-  //    exclude group: 'com.android.support', module: 'recyclerview-v7'
-  //  }
-  //  androidTestCompile "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION"
-
-  androidTestCompile "com.android.support.test.uiautomator:uiautomator-v18:$UI_AUTOMATOR_VERSION"
-  //  androidTestCompile "com.android.support.test:runner:$RUNNER_VERSION"
-  //  androidTestCompile "com.android.support.test:rules:$RUNNER_VERSION"
   androidTestCompile "org.mockito:mockito-all:$MOCKITO_VERSION"
-  androidTestCompile "com.crittercism.dexmaker:dexmaker:$DEXMAKER_VERSION"
-  androidTestCompile "com.crittercism.dexmaker:dexmaker-dx:$DEXMAKER_VERSION"
-//  androidTestCompile "com.crittercism.dexmaker:dexmaker-mockito:$DEXMAKER_VERSION"
+  androidTestCompile 'com.google.dexmaker:dexmaker:1.2'
+  androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
 
-  //  androidTestApt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+  // Espresso UI Testing
+  androidTestCompile "com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION"
+  androidTestCompile "com.android.support.test.espresso:espresso-contrib:$ESPRESSO_VERSION"
+  androidTestCompile "com.android.support.test.espresso:espresso-intents:$ESPRESSO_VERSION"
+
+  // Resolve conflicts between main and test APK:
+  androidTestCompile "com.android.support:support-annotations:$SUPPORT_LIBRARY_VERSION"
+  androidTestCompile "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION"
+  androidTestCompile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
+  androidTestCompile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+  androidTestCompile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
 }

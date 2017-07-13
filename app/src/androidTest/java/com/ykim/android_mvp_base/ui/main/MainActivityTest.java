@@ -1,5 +1,6 @@
 package com.ykim.android_mvp_base.ui.main;
 
+import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -34,6 +35,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
   @Test public void basicScreenTest() {
     onView(withId(R.id.mainRv)).check(matches(isDisplayed()));
+    onView(withId(R.id.mainRv)).perform(RecyclerViewActions.scrollToPosition(10));
+    onView(withId(R.id.mainRv)).perform(RecyclerViewActions.scrollToPosition(0));
+    onView(withId(R.id.mainRv)).perform(RecyclerViewActions.scrollToPosition(5));
   }
 
   //@SuppressLint("RtlHardcoded") @Test public void mainScreenTest() {

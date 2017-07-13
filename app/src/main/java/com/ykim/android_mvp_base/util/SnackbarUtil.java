@@ -7,7 +7,7 @@ import android.view.View;
  * Created by ykim on 2017. 7. 13..
  */
 
-public class SnackbarUtil {
+@SuppressWarnings("SpellCheckingInspection") public class SnackbarUtil {
   public static void showSnackbar(View view, String message) {
     if (view == null || message.isEmpty()) {
       return;
