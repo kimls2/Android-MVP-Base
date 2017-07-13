@@ -105,7 +105,7 @@ dependencies {
 
   // Dependencies for Android unit tests
   androidTestCompile "junit:junit:$JUNIT_VERSION"
-  androidTestCompile "org.mockito:mockito-all:$MOCKITO_VERSION"
+  androidTestCompile "org.mockito:mockito-core:$MOCKITO_VERSION"
   androidTestCompile 'com.google.dexmaker:dexmaker:1.2'
   androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
 
