@@ -21,4 +21,5 @@ interface AppComponent {
   }
 
   void inject(MyApp app);
+
 }

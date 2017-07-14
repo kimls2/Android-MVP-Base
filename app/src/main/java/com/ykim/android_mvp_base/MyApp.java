@@ -22,6 +22,10 @@ public class MyApp extends Application implements HasActivityInjector {
 
   private RefWatcher refWatcher;
 
+  public static MyApp get(Context context) {
+    return (MyApp) context.getApplicationContext();
+  }
+
   public static RefWatcher getRefWatcher(Context context) {
     MyApp application = (MyApp) context.getApplicationContext();
     return application.refWatcher;

@@ -120,4 +120,5 @@ dependencies {
   androidTestCompile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
   androidTestCompile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
   androidTestCompile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+  androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
 }

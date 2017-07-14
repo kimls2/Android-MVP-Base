@@ -9,7 +9,7 @@ import android.view.View;
 
 @SuppressWarnings("SpellCheckingInspection") public class SnackbarUtil {
   public static void showSnackbar(View view, String message) {
-    if (view == null || message.isEmpty()) {
+    if (view == null || message == null) {
       return;
     }
     Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show();
