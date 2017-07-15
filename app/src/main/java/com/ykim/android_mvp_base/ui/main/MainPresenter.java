@@ -11,6 +11,7 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -54,7 +55,9 @@ public class MainPresenter extends BasePresenter<MainMvp.View> implements MainMv
         }));
   }
 
-  private void flatMapTest() {
+  public void flatMapTest() {
+    this.galleryImages.clear();
+    getMvpView().showLoading(true);
     disposable.add(dataManager.getGallery(0)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
@@ -64,21 +67,31 @@ public class MainPresenter extends BasePresenter<MainMvp.View> implements MainMv
             return Observable.fromIterable(images);
           }
         })
-        .filter(GalleryImage::isAnimated)
-        .subscribe(galleryImage -> {
+        .subscribeWith(new DisposableObserver<GalleryImage>() {
+          @Override public void onNext(@NonNull GalleryImage image) {
+            addImage(image);
+          }
 
-            }, throwable -> {
-            }, () -> {
-            }
+          @Override public void onError(@NonNull Throwable throwable) {
+            getMvpView().showLoading(false);
+            getMvpView().showError(throwable.getMessage());
+          }
 
-        )
+          @Override public void onComplete() {
+            getMvpView().showLoading(false);
+            getMvpView().showImages(galleryImages);
+          }
+        }));
+  }
 
-    );
+  private List<GalleryImage> galleryImages = new ArrayList<>();
+
+  private void addImage(GalleryImage image) {
+    galleryImages.add(image);
   }
 
   private void setEventBus() {
     disposable.add(eventBus.getEvents().subscribe(event -> {
-
         }, throwable -> getMvpView().showError(throwable.getMessage())
 
     ));

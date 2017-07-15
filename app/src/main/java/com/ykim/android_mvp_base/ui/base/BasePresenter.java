@@ -8,12 +8,11 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public class BasePresenter<T extends BaseMvp.View> implements BaseMvp.Presenter<T> {
 
-  protected CompositeDisposable disposable;
+  protected  CompositeDisposable disposable = new CompositeDisposable();
   private T mvpView;
 
   @Override public void attachView(T mvpView) {
     this.mvpView = mvpView;
-    disposable = new CompositeDisposable();
   }
 
   @Override public void detachView() {
