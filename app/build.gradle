@@ -11,7 +11,7 @@ android {
   buildToolsVersion "26.0.0"
   defaultConfig {
     applicationId "com.ykim.android_mvp_base"
-    minSdkVersion 21
+    minSdkVersion 19
     targetSdkVersion 26
     versionCode 1
     versionName "1.0"
